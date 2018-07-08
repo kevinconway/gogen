@@ -18,17 +18,29 @@ func RewriteRules(inputs []string) (map[string]ast.Node, error) {
 		}
 		var src = tuple[0]
 		var dest = tuple[1]
-		if dest[0] == '*' {
-			results[src] = &ast.StarExpr{
-				X: &ast.Ident{
-					Name: dest[1:],
-				},
-			}
-			continue
+		var star = dest[0] == '*'
+		if star {
+			dest = dest[1:]
 		}
-		results[src] = &ast.Ident{
+		var id ast.Node = &ast.Ident{
 			Name: dest,
 		}
+		if strings.Contains(dest, ".") {
+			var parts = strings.Split(dest, ".")
+			if len(parts) != 2 {
+				return nil, fmt.Errorf("invalid rewrite rule: %s", input)
+			}
+			id = &ast.SelectorExpr{
+				Sel: &ast.Ident{Name: parts[1]},
+				X:   &ast.Ident{Name: parts[0]},
+			}
+		}
+		if star {
+			id = &ast.StarExpr{
+				X: id.(ast.Expr),
+			}
+		}
+		results[src] = id
 	}
 	return results, nil
 }

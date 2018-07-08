@@ -38,6 +38,14 @@ func TestRewriteRules(t *testing.T) {
 			},
 			wantErr: false,
 		},
+		{
+			name: "dot",
+			args: args{inputs: []string{"T=N.T"}},
+			want: map[string]ast.Node{
+				"T": &ast.SelectorExpr{Sel: &ast.Ident{Name: "T"}, X: &ast.Ident{Name: "N"}},
+			},
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

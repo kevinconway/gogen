@@ -37,6 +37,10 @@ In addition to direct rewrites, the CLI also offers the following options:
 
     If the concrete type given in a rewrite rule is prefixed with an `*` then a pointer type will be used.
 
+*   -rewrite "T=pkg.Name"
+
+    If the concrete type has a package prefix then the resulting code will correctly select the type from the target package. However, the rewrite will not change import statements or add new ones. It is recommended to use something like `goimports` to correct any missing or excess import statements after rewrites.
+
 *   -package newname
 
     The package option causes the renderer to set a custom package name in all files rendered. By default, the original package name is reused.
