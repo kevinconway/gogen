@@ -1,0 +1,10 @@
+hash: 9eeeb07739630d9e30d002497506697f7ccbb964bd824fe8d5be314c54b654f8
+updated: 2018-07-08T02:22:53.003316156-05:00
+imports:
+- name: golang.org/x/tools
+  version: 827133af57adc910f5a5f91130bbc3c15a520991
+  subpackages:
+  - go/ast/astutil
+- name: gopkg.in/urfave/cli.v1
+  version: cfb38830724cc34fedffe9a2a29fb54fa9169cd1
+testImports: []

@@ -1,0 +1,6 @@
+package: github.com/kevinconway/gogen
+import:
+- package: golang.org/x/tools
+  subpackages:
+  - go/ast/astutil
+- package: gopkg.in/urfave/cli.v1
