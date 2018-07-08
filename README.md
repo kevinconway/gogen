@@ -72,3 +72,9 @@ In addition to direct rewrites, the CLI also offers the following options:
 
     The package option causes the renderer to set a custom package name in
     all files rendered. By default, the original package name is reused.
+
+
+## License
+
+This project is available under the Apache2.0 license. See the `LICENSE` file
+in this repository for the complete license text.
