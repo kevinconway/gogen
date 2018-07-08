@@ -2,7 +2,7 @@ package main
 
 import (
 	"go/ast"
-	"go/printer"
+	"go/format"
 	"os"
 	"path/filepath"
 
@@ -64,7 +64,7 @@ func main() {
 			if errOutFile != nil {
 				return cli.NewExitError(errOutFile.Error(), 1)
 			}
-			_ = printer.Fprint(outFile, fs, f)
+			_ = format.Node(outFile, fs, f)
 			_ = outFile.Close()
 		}
 		return nil
