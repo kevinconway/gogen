@@ -28,8 +28,18 @@ gogen -source github.com/username/package -destination . -rewrite "I=uint16" -re
 ```
 
 The source code will be rewritten without the `type I interface{}` lines and
-with all references to generic types replaced with concrete types. The output
-will be formatted with `gofmt` (but not `goimports`).
+with all references to generic types replaced with concrete types.
+
+```golang
+func Add(left, right uint16) uint16 {
+    return left + right
+}
+func Sub(left, right float64) float64 {
+    return left - right
+}
+```
+
+The output will be formatted with `gofmt` (but not `goimports`).
 
 ## More Options
 
